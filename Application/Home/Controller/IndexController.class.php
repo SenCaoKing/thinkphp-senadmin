@@ -2,6 +2,7 @@
 namespace Home\Controller;
 use Think\Controller;
 class IndexController extends Controller {
+    // 首页分页测试
     public function index(){
         $count = M('Articles')->count();
         $page = new \Org\Sen\Page($count, 1);
@@ -10,6 +11,11 @@ class IndexController extends Controller {
 
         $this->assign('list', $list);
         $this->assign('page', $show);
+        $this->display();
+    }
+
+    // 自定义标签 ueditor
+    public function ueditor(){
         $this->display();
     }
 }

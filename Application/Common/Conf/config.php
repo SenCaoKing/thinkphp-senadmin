@@ -12,4 +12,9 @@ return array(
 
     'TAGLIB_BUILD_IN'       => 'Cx,Common\Tag\My', // 加载自定义标签
 
+    /* 页面设置 */
+    'TMPL_EXCEPTION_FILE'   => APP_DEBUG ? THINK_PATH.'Tpl/think_exception.tpl' : './Template/default/Home/Public/404.html',
+    'TMPL_ACTION_ERROR'     => TMPL_PATH.'/Public/dispatch_jump.tpl', // 默认错误跳转对应的模板文件
+    'TMPL_ACTION_SUCCESS'   => TMPL_PATH.'/Public/dispatch_jump.tpl', // 默认成功跳转对应的模板文件
+
 );

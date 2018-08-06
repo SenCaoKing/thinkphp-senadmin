@@ -1,0 +1,2 @@
+﻿Home模块
+Controller Home控制器目录 继承HomeBaseController

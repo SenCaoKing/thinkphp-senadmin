@@ -1,7 +1,7 @@
 <?php
 namespace Home\Controller;
-use Think\Controller;
-class IndexController extends Controller {
+use Common\Controller\HomeBaseController;
+class IndexController extends HomeBaseController {
     // 首页分页测试
     public function index(){
         $count = M('Articles')->count();

@@ -17,4 +17,9 @@ return array(
     'TMPL_ACTION_ERROR'     => TMPL_PATH.'/Public/dispatch_jump.tpl', // 默认错误跳转对应的模板文件
     'TMPL_ACTION_SUCCESS'   => TMPL_PATH.'/Public/dispatch_jump.tpl', // 默认成功跳转对应的模板文件
 
+    /* 其他设置 */
+    'RONGLIAN_ACCOUNT_SID'  => '', // 容联云通讯 主账号 accountSid
+    'RONGLIAN_ACCOUNT_TOKEN'=> '', // 容联云通讯 主账号 token accountToken
+    'RONGLIAN_APPID'        => '', // 容联云通讯 应用Id appid
+    'RONGLIAN_TEMPLATE_ID'  => '', // 容联云通讯 模板d
 );

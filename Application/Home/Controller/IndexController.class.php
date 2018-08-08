@@ -111,4 +111,9 @@ class IndexController extends HomeBaseController {
 
         $this->display();
     }
+
+    public function qrcode(){
+        $url = I('post.url');
+        qrcode($url);
+    }
 }

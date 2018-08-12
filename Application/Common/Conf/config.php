@@ -1,16 +1,21 @@
 <?php
 return array(
-	//'配置项'=>'配置值'
-    /* 数据库设置 */
-    'DB_TYPE'               =>  'mysql',     // 数据库类型
-    'DB_HOST'               =>  'localhost', // 服务器地址
-    'DB_NAME'               =>  'thinkphp-senadmin',          // 数据库名
-    'DB_USER'               =>  'root',      // 用户名
-    'DB_PWD'                =>  'root',          // 密码
-    'DB_PORT'               =>  '3306',        // 端口
-    'DB_PREFIX'             =>  '',    // 数据库表前缀
-
-    'TAGLIB_BUILD_IN'       => 'Cx,Common\Tag\My', // 加载自定义标签
+	/* 附加设置 */
+	'SHOW_PAGE_TRACE'        => true, // 是否显示调试面板
+    'URL_CASE_INSENSITIVE'   => false, // url区分大小写
+    'TAGLIB_BUILD_IN'        => 'Cx,Common\Tag\My', // 加载自定义标签
+    'LOAD_EXT_CONFIG'        => 'db', // 加载网站设置文件
+    'TMPL_PARSE_STRING'      => array(
+        '__OSS__'            => OSS_URL,
+        '__PUBLIC__'         => OSS_URL.__ROOT__.'/Public',
+        '__ADMIN_CSS__'      => __ROOT__.trim(TMPL_PATH, '.').'Admin/Public/css',
+        '__ADMIN_JS__'       => __ROOT__.trim(TMPL_PATH, '.').'Admin/Public/js',
+        '__ADMIN_IMAGES__'   => OSS_URL.trim(TMPL_PATH, '.').'Admin/Public/images',
+        '__ADMIN_ACEADMIN__' => OSS_URL.__ROOT__.'/Public/statics/aceadmin',
+        '__PUBLIC_CSS__'     => __ROOT__.trim(TMPL_PATH, '.').'Public/css',
+        '__PUBLIC_JS__'      => __ROOT__.trim(TMPL_PATH, '.').'Public/js',
+        '__PUBLIC_IMAGES__'  => OSS_URL.trim(TMPL_PATH, '.').'Public/images',
+    ),
 
     /* 页面设置 */
     'TMPL_EXCEPTION_FILE'   => APP_DEBUG ? THINK_PATH.'Tpl/think_exception.tpl' : './Template/default/Home/Public/404.html',

@@ -25,13 +25,13 @@ class IndexController extends HomeBaseController {
          * getBy 后边要跟一个字段，获取整条数据
          */
         // 常规情况
-        $data = M('tp_getfield_user')->where(array('name' => 'sen01'))->find();
+        $data = M('getfield_user')->where(array('name' => 'sen01'))->find();
 
         // 使用 getby 简化为
-        $data = M('tp_getfield_user')->getByName('sen01'); // 通过 name 字段获取整条数据
-        $data = M('tp_getfield_user')->getByAvatar('sen01.jpg'); // 同理可得通过 avatar 字段获取整条数据
-        $data = M('tp_getfield_user')->getById(1); // 同理可得通过 id 字段获取整条数据；但是如果 id 是主键的话，可以使用 find(id) 如下:
-        $data = M('tp_getfield_user')->find(1); // 得到的结果和 M('tp_getfield_user')->getById(1); 是一样的
+        $data = M('getfield_user')->getByName('sen01'); // 通过 name 字段获取整条数据
+        $data = M('getfield_user')->getByAvatar('sen01.jpg'); // 同理可得通过 avatar 字段获取整条数据
+        $data = M('getfield_user')->getById(1); // 同理可得通过 id 字段获取整条数据；但是如果 id 是主键的话，可以使用 find(id) 如下:
+        $data = M('getfield_user')->find(1); // 得到的结果和 M('tp_getfield_user')->getById(1); 是一样的
         // ①中几条语句打印结果均为：
         /*
         array(3) {
@@ -46,14 +46,14 @@ class IndexController extends HomeBaseController {
          * getFieldBy 后面要跟一个字段，括号内有两个参数:第一个跟 Field 对应的条件，第二个是要取得字段
          */
         // 常规情况
-        $data = M('tp_getfield_user')->field('avatar')->where(array('name' => 'sen01'))->find();
+        $data = M('getfield_user')->field('avatar')->where(array('name' => 'sen01'))->find();
         $avatar = $data['avatar'];
 
         // 使用 getField 简化为:
-        $avatar = M('tp_getfield_user')->where(array('name' => 'sen01'))->getField('avatar');
+        $avatar = M('getfield_user')->where(array('name' => 'sen01'))->getField('avatar');
 
         // 使用 getFieldBy 简化:
-        $avatar = M('tp_getfield_user')->getFieldByName('sen01', 'avatar');
+        $avatar = M('getfield_user')->getFieldByName('sen01', 'avatar');
         // ②中几条语句打印结果均为:
         /**
          * string(9) "sen01.jpg"
@@ -66,11 +66,11 @@ class IndexController extends HomeBaseController {
          * 读取字段值其实就是获取数据表中的某个列的多个或者单个数据，最常用的方法时 getField 方法
          */
         // 常规情况
-        $data = M('tp_getfield_user')->field('name')->where(array('avatar' => 'sen02.jpg'))->select();
+        $data = M('getfield_user')->field('name')->where(array('avatar' => 'sen02.jpg'))->select();
         $name_array = array_column($data, 'name');
 
         // 使用 getField 简化:
-        $avatar_array = M('tp_getfield_user')->where(array('avatar' => 'sen02.jpg'))->getField('name', true);
+        $avatar_array = M('getfield_user')->where(array('avatar' => 'sen02.jpg'))->getField('name', true);
         // 打印结果
         /*
         array(2) {
@@ -80,7 +80,7 @@ class IndexController extends HomeBaseController {
         */
 
         // 如果我们传入一个字符串分隔符 : ;那么返回的结果就是一个数组，键名是用户id，键值是 name:avatar 的输出字符串
-        $data = M('tp_getfield_user')->getField('id, name, avatar', ':');
+        $data = M('getfield_user')->getField('id, name, avatar', ':');
         // 打印结果
         /*
         array(3) {
@@ -91,7 +91,7 @@ class IndexController extends HomeBaseController {
         */
 
         // getField 方法还可以支持限制数量
-        $data = M('tp_getfield_user')->getField('id, name', 2); // 限制返回2条记录
+        $data = M('getfield_user')->getField('id, name', 2); // 限制返回2条记录
         // 打印结果
         /*
         array(2) {
@@ -100,7 +100,7 @@ class IndexController extends HomeBaseController {
         }
         */
 
-        $data = M('tp_getfield_user')->getField('id', 2); // 获取id数组 限制2条记录
+        $data = M('getfield_user')->getField('id', 2); // 获取id数组 限制2条记录
         // 打印结果
         /*
         array(2) {

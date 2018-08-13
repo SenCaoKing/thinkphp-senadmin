@@ -13,11 +13,58 @@ class AdminNavModel extends BaseModel{
      */
     public function addData($data){
         // 去除键值首尾的空格
-        foreach ($data as $k => $v) {
+        foreach ($data as $k => $v){
             $data[$k]=trim($v);
         }
         $id=$this->add($data);
         return $id;
+    }
+
+    /**
+     * 修改数据
+     * @param array $map  where语句数组形式
+     * @param array $data 数据
+     * @return boolean    操作是否成功
+     */
+    public function editData($map, $data)
+    {
+        // 去除键值首位空格
+        foreach($data as $k => $v){
+            $data[$k]=trim($v);
+        }
+        $result=$this->where($map)->save($data);
+        return $result;
+    }
+
+    /**
+     * 数据排序
+     * @param $data         数据源
+     * @param string $id    主键
+     * @param string $order 排序字段
+     * @return boolean      操作是否成功
+     */
+    public function orderData($data, $id='id', $order='order_number'){
+        foreach($data as $k => $v){
+            $v=empty($v) ? null : $v;
+            $this->where(array($id=>$k))->save(array($order=>$v));
+        }
+        return true;
+    }
+
+    /**
+     * 删除数据
+     * @param array $map where语句形式数组
+     * @return boolean   操作是否成功
+     */
+    public function deleteData($map){
+        $count=$this
+            ->where(array('pid'=>$map['id']))
+            ->count();
+        if($count!=0){
+            return false;
+        }
+        $this->where(array($map))->delete();
+        return true;
     }
 
     /**
@@ -52,7 +99,7 @@ class AdminNavModel extends BaseModel{
                 }
             }
         }
-        dump($data);
+        // dump($data);
         return $data;
     }
 }

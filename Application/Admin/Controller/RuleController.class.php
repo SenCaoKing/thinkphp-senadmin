@@ -63,6 +63,66 @@ class RuleController extends AdminBaseController{
         }else{
             $this->error('请先删除子权限');
         }
+
     }
+    //************ 用户组 ***********
+    /**
+     * 用户组列表
+     */
+    public function group(){
+        $data=D('AuthGroup')->select();
+        $assign=array(
+            'data'=>$data
+        );
+        $this->assign($assign);
+        $this->display();
+    }
+
+    /**
+     * 添加用户组
+     */
+    public function add_group(){
+        $data=I('post.');
+        unset($data['id']);
+        $result=D('AuthGroup')->addData($data);
+        if($result){
+            $this->success('添加成功', U('Admin/Rule/group'));
+        }else{
+            $this->error('添加失败');
+        }
+    }
+
+    /**
+     * 修改用户组
+     */
+    public function edit_group(){
+        $data=I('post.');
+        $map=array(
+            'id'=>$data['id']
+        );
+        $result=D('AuthGroup')->editData($map, $data);
+        if($result){
+            $this->success('修改成功', U('Admin/Rule/Group'));
+        }else{
+            $this->error('修改失败');
+        }
+    }
+
+    /**
+     * 删除用户组
+     */
+    public function delete_group(){
+        $id=I('get.id');
+        $map=array(
+            'id'=>$id
+        );
+        $result=D('AuthGroup')->deleteData($map);
+        if($result){
+            $this->success('删除成功', U('Admin/Rule/group'));
+        }else{
+            $this->error('请先删除子权限');
+        }
+    }
+
 
 }

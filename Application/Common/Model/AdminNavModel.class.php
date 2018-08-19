@@ -7,21 +7,6 @@ use Common\Model\BaseModel;
 class AdminNavModel extends BaseModel{
 
     /**
-     * 数据排序
-     * @param $data         数据源
-     * @param string $id    主键
-     * @param string $order 排序字段
-     * @return boolean      操作是否成功
-     */
-    public function orderData($data, $id='id', $order='order_number'){
-        foreach($data as $k => $v){
-            $v=empty($v) ? null : $v;
-            $this->where(array($id=>$k))->save(array($order=>$v));
-        }
-        return true;
-    }
-
-    /**
      * 删除数据
      * @param array $map where语句形式数组
      * @return boolean   操作是否成功
@@ -72,4 +57,6 @@ class AdminNavModel extends BaseModel{
         // dump($data);
         return $data;
     }
+
+
 }

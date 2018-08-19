@@ -1,11 +1,9 @@
 <?php
 namespace Common\Model;
 use Common\Model\BaseModel;
-
 /**
- * Class BaseModel
- * @package Common\Model
+ * 权限规则model
  */
-class UserModel extends Model {
+class AuthGroupModel extends BaseModel {
 
 }

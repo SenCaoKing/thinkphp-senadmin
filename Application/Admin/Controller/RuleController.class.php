@@ -120,8 +120,42 @@ class RuleController extends AdminBaseController{
         if($result){
             $this->success('删除成功', U('Admin/Rule/group'));
         }else{
-            $this->error('请先删除子权限');
+            $this->error('删除失败');
         }
+    }
+
+    //************ 权限-用户组 ***********
+    /**
+     * 分配权限
+     */
+    public function rule_group(){
+        if(IS_POST){
+            $data=I('post.');
+            $map=array(
+                'id'=>$data['id']
+            );
+            $data['rules']=implode(',', $data['rule_ids']);
+            $result=D('AuthGroup')->editData($map, $data);
+            if($result){
+                $this->success('删除成功', U('Admin/Rule/group'));
+            }else{
+                $this->error('操作失败');
+            }
+        }else{
+            $id=I('get.id');
+            // 获取用户组数据
+            $group_data=M('Auth_group')->where(array('id'=>$id))->find();
+            $group_data['rules']=explode(',', $group_data['rules']);
+            // 获取规则数据
+            $rule_data=D('AuthRule')->getTreeData('level', 'id', 'title');
+            $assign=array(
+                'group_data'=>$group_data,
+                'rule_data'=>$rule_data
+            );
+            $this->assign($assign);
+            $this->display();
+        }
+
     }
 
 

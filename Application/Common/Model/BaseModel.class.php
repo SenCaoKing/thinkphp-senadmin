@@ -77,9 +77,9 @@ class BaseModel extends Model{
             $data=$this->order($order.' is null,'.$order)->select();
         }
         // 获取树形或者结构数据
-        if($type='tree'){
+        if($type=='tree'){
             $data=\Org\Sen\Data::tree($data, $name, $child, $parent);
-        }elseif($type="level"){
+        }elseif($type=="level"){
             $data=\Org\Sen\Data::channelLevel($data, 0, '&nbsp;', $child);
         }
         return $data;

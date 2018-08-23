@@ -46,3 +46,25 @@ function send_sms_code($phone, $code){
         return true;
     }
 }
+
+/**
+ * 检测是否登录
+ * @return boolean 是否登录
+ */
+function check_login(){
+    if(!empty($_SESSION['user']['id'])){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+/**
+ * 实例化page类
+ * @param  integer $count 总数
+ * @param  integer $limit 每页数量
+ * @return subject        page类
+ */
+function new_page($count, $limit=10){
+    return new \Org\Sen\Page($count, $limit);
+}

@@ -3,7 +3,6 @@ namespace Common\Controller;
 use Think\Controller;
 /**
  * Base基类控制器
- * @package Common\Controller
  */
 class BaseController extends Controller {
     /**
@@ -12,4 +11,5 @@ class BaseController extends Controller {
     public function _initialize(){
 
     }
+
 }

@@ -20,4 +20,7 @@ class AuthGroupModel extends BaseModel{
         $result=D('AuthGroupAccess')->deleteData($group_map);
         return $result;
     }
+
+
+
 }

@@ -2,28 +2,14 @@
 namespace Admin\Controller;
 use Common\Controller\AdminBaseController;
 /**
- * 后台首页控制器
- * @package Admin\Controller
+ * 文章
  */
-class IndexController extends AdminBaseController{
+class PostsController extends AdminBaseController{
     /**
-     * 首页
+     * 文章列表
      */
     public function index(){
-        $this->display();
-    }
-    /**
-     * elements
-     */
-    public function elements(){
-
-        $this->display();
+        echo '文章列表';
     }
 
-    /**
-     * welcome
-     */
-    public function welcome(){
-        $this->dispaly();
-    }
 }

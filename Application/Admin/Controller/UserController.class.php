@@ -2,28 +2,28 @@
 namespace Admin\Controller;
 use Common\Controller\AdminBaseController;
 /**
- * 后台首页控制器
- * @package Admin\Controller
+ * 用户
  */
-class IndexController extends AdminBaseController{
+class UsersController extends AdminBaseController{
+
     /**
-     * 首页
+     * 用户列表
      */
     public function index(){
+        $word=I('get.word', '');
+        if(empty($word)){
+            $map=array();
+        }else{
+            $map=array(
+                'username'=>$word
+            );
+        }
+        $assign=D('Users')->getAdminPage($map, 'register_time desc');
+        $this->assign($assign);
         $this->display();
     }
-    /**
-     * elements
-     */
-    public function elements(){
 
-        $this->display();
-    }
 
-    /**
-     * welcome
-     */
-    public function welcome(){
-        $this->dispaly();
-    }
+
+
 }

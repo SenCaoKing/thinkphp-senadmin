@@ -41,7 +41,6 @@
     <a href="{:U('Home/Index/logout')}">退出登录</a>
 </div>
 
-
 <div class="box">
     <h4>
         <a target="_blank" href="#">thinkphp系列之phpqrcode生成二维码</a>
@@ -52,6 +51,15 @@
     </form>
 </div>
 
+<div class="box">
+    <h4>
+        <a target="_blank" href="#">thinkphp系列之tcpdf生成pdf文件</a>
+    </h4>
+    <form action="{:U('Home/Index/pdf')}" method="post">
+        输入内容：<textarea name="content" cols="30" rows="10"><h1 style="color: red">hello world</h1></textarea>
+        <input type="submit" value="生成pdf">
+    </form>
+</div>
 
 <div class="box">
     <h4>
@@ -80,7 +88,6 @@
         </div>
     </div>
 </div>
-
 
 </body>
 </html>

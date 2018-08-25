@@ -50,6 +50,14 @@ class IndexController extends HomeBaseController{
         qrcode($url);
     }
 
+    /**
+     * 生成pdf
+     */
+    public function pdf(){
+        $content=$_POST['content'];
+        pdf($content);
+    }
+
     // 首页分页测试
     public function index(){
         $count = M('Articles')->count();

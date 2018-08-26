@@ -58,6 +58,14 @@ class IndexController extends HomeBaseController{
         pdf($content);
     }
 
+    /**
+     * 生成xls格式的表格
+     */
+    public function xls(){
+        $data=I('post.data');
+        create_xls($data);
+    }
+
     // 首页分页测试
     public function index(){
         $count = M('Articles')->count();

@@ -26,5 +26,8 @@ return array(
     'RONGLIAN_ACCOUNT_SID'  => '', // 容联云通讯 主账号 accountSid
     'RONGLIAN_ACCOUNT_TOKEN'=> '', // 容联云通讯 主账号 token accountToken
     'RONGLIAN_APPID'        => '', // 容联云通讯 应用Id appid
-    'RONGLIAN_TEMPLATE_ID'  => '', // 容联云通讯 模板d
+    'RONGLIAN_TEMPLATE_ID'  => '', // 容联云通讯 模板id
+
+    'GEETEST_ID'             => '034b9cc862456adf05398821cefc94eb', // 极验id  仅供测试使用
+    'GEETEST_KEY'            => 'b7f064b9ae813699de794303f0b0e76f', // 极验key 仅供测试使用
 );

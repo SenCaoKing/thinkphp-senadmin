@@ -105,6 +105,18 @@
     </form>
 </div>
 
+<div class="box">
+    <h4>
+        <a target="_blank" href="#">thinkphp系列之极验滑动验证码</a>
+    </h4>
+    <form id="geetest" action="{:U('Home/Index/geetest_submit_check')}" method="post">
+        账号：<input type="text" name="username" value="admin">
+        密码：<input type="text" name="password" value="123456">
+        <input type="button" value="异步验证登录" onclick="check_verify()">
+        <input type="submit" value="post提交登录">
+        <div id="captcha"></div>
+    </form>
+</div>
 
 
 
@@ -136,5 +148,45 @@
     </div>
 </div>
 
+
+<bootstrapjs />
+<script src="http://static.geetest.com/static/tools/gt.js"></script>
+
+<script>
+    var handler = function(captchaObj){
+        // 将验证码加到id为captcha的元素里
+        captchaObj.appendTo("#captcha");
+    };
+    // 获取验证码
+    $.get("{:U('Home/Index/geetest_show_verify')}", function(data){
+        // 使用initGeetest接口
+        // 参数1：配置参数，与创建Geetest实例时接受的参数一致
+        // 参数2：回调，回调的第一个参数验证码对象，之后可以使用它做appendTo之类的事件
+        initGeetest({
+            gt: data.gt,
+            challenge: data.challenge,
+            product: "float", // 产品形式
+            offline: !data.success
+        }, handler);
+    }, 'json');
+    // 检测验证码
+    function check_verify(){
+        // 组合验证需要用的数据
+        var test=$('.geetest_challenge').val();
+        var postData={
+            geetest_challenge: $('.geetest_challenge').val(),
+            geetest_validate: $('.geetest_validate').val(),
+            geetest_seccode: $('.geetest_seccode').val()
+        }
+        // 验证是否通过
+        $.post("{:U('Home/Index/geetest_ajax_check')}", postData, function(data){
+            if(data==1){
+                alert('验证成功');
+            }else{
+                alert('验证失败');
+            }
+        });
+    }
+</script>
 </body>
 </html>

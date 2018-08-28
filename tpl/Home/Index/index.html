@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>功能测试</title>
     <bootstrapcss />
+    <webuploadercss />
     <style type="text/css">
         .box{
             margin-top: 50px;
@@ -118,6 +119,17 @@
     </form>
 </div>
 
+<div class="box">
+    <h4>
+        <a target="_blank" href="#">thinkphp系列之webuploader异步预览上传</a>
+    </h4>
+    <form action="{:U('Home/Index/webuploader')}" method="post">
+        <webuploader name="image" />
+        自定义附加字段：<input type="text" name="extend" value="上传的文件描述">
+        <input type="submit" value="提交">
+    </form>
+    <a href="{:U('Home/Index/webuploader')}" target="_blank">点击在新页面中打开一个上传demo</a>
+</div>
 
 
 <div class="box">
@@ -151,7 +163,7 @@
 
 <bootstrapjs />
 <script src="http://static.geetest.com/static/tools/gt.js"></script>
-
+<webuploaderjs />
 <script>
     var handler = function(captchaObj){
         // 将验证码加到id为captcha的元素里

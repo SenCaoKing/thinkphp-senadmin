@@ -67,6 +67,18 @@ class IndexController extends HomeBaseController{
     }
 
     /**
+     * 生成csv格式的表格
+     */
+    public function csv(){
+        $data=I('post.data');
+        array_walk($data, function(&$v){
+            $v=implode(',', $v);
+        });
+        $heaher = '曹,Sen,King';
+        create_csv($data, $heaher);
+    }
+
+    /**
      * geetest生成验证码
      */
     public function geetest_show_verify(){

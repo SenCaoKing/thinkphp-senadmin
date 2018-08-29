@@ -1,7 +1,7 @@
 <?php
 return array(
 	/* 附加设置 */
-	'SHOW_PAGE_TRACE'        => true, // 是否显示调试面板
+	'SHOW_PAGE_TRACE'        => false, // 是否显示调试面板
     'URL_CASE_INSENSITIVE'   => false, // url区分大小写
     'TAGLIB_BUILD_IN'        => 'Cx,Common\Tag\My', // 加载自定义标签
     'LOAD_EXT_CONFIG'        => 'db', // 加载网站设置文件

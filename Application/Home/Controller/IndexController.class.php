@@ -74,8 +74,26 @@ class IndexController extends HomeBaseController{
         array_walk($data, function(&$v){
             $v=implode(',', $v);
         });
-        $heaher = '曹,Sen,King';
-        create_csv($data, $heaher);
+        create_csv($data);
+    }
+
+    /**
+     * 导入xls格式的数据
+     * 也可以用来导入csv格式的数据
+     * 但是csv建议使用 下面的import_csv 效率更高
+     */
+    public function import_xls(){
+        $data=import_excel('./Upload/excel/simple.xls');
+        dump($data);
+    }
+
+    /**
+     * 导入csv格式的数据
+     */
+    public function import_csv(){
+        $data=file_get_contents('./Upload/excel/simple.csv');
+        $data=explode("\r\n", $data);
+        dump($data);
     }
 
     /**

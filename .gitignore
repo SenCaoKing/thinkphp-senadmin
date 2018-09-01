@@ -1,4 +1,4 @@
 /vendor/
 /Runtime/
 install.lock
-Application/Common/Config/db.php
+Application/Common/Conf/db.php
